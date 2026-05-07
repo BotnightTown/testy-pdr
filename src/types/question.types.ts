@@ -28,3 +28,9 @@ export interface QuestionOption {
   id: number;
   text: string;
 }
+
+export interface AnswerResult {
+  selectedOptionId: number;
+  isCorrect: boolean;
+  timeSpent: number;
+}

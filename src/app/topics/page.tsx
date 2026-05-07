@@ -10,28 +10,28 @@ export default function TopicsPage() {
   const themes = getQuestionThemesByCategories(selectedCategoryIds);
 
   return (
-    <main className="min-h-screen bg-slate-50 px-4 py-8 sm:px-6">
+    <main className="min-h-screen bg-slate-50 dark:bg-slate-900 px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-5xl">
         <nav className="mb-8 flex flex-wrap items-center justify-between gap-3">
           <Link
             href="/"
-            className="font-medium text-slate-500 transition-colors hover:text-slate-800"
+            className="font-medium text-slate-500 dark:text-slate-400 transition-colors hover:text-slate-800 dark:hover:text-slate-200"
           >
             ← На головну
           </Link>
           <Link
             href="/settings"
-            className="font-bold text-blue-600 transition-colors hover:text-blue-700"
+            className="font-bold text-blue-600 dark:text-blue-400 transition-colors hover:text-blue-700 dark:hover:text-blue-300"
           >
             Налаштування категорій
           </Link>
         </nav>
 
         <header className="mb-10 text-center">
-          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900">
+          <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100">
             Питання по темах
           </h1>
-          <p className="mt-2 text-slate-600">
+          <p className="mt-2 text-slate-600 dark:text-slate-400">
             Оберіть тему для початку тренування
           </p>
         </header>
