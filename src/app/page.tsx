@@ -9,9 +9,7 @@ export default function Home() {
           <h1 className="text-4xl font-extrabold tracking-tight text-slate-900">
             Тестування ПДР
           </h1>
-          <p className="mt-2 text-slate-600">
-            Оберіть режим тренування
-          </p>
+          <p className="mt-2 text-slate-600">Оберіть режим тренування</p>
         </header>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -45,9 +43,7 @@ export default function Home() {
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-lg font-extrabold text-slate-600 transition-colors group-hover:bg-blue-50 group-hover:text-blue-600">
                 ⚙
               </div>
-              <h2 className="text-xl font-bold text-slate-900">
-                Налаштування
-              </h2>
+              <h2 className="text-xl font-bold text-slate-900">Налаштування</h2>
               <p className="mt-2 text-sm leading-6 text-slate-500">
                 Оберіть категорії водіння для навчання.
               </p>
