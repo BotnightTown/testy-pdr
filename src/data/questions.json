@@ -4169,7 +4169,7 @@
   },
   {
     "section": "7",
-    "section_title": "ВИМОГИ ДО ОСІБ, ЯКІ КЕРУЮТЬ ГУЖОВИМ",
+    "section_title": "ВИМОГИ ДО ОСІБ, ЯКІ КЕРУЮТЬ ГУЖОВИМ ТРАНСПОРТОМ, І ПОГОНИЧІВ ТВАРИН",
     "question_id": 2,
     "question": "Чим повинен бути обладнаний гужовий віз (сани)?",
     "options": [
@@ -4186,7 +4186,7 @@
   },
   {
     "section": "7",
-    "section_title": "ВИМОГИ ДО ОСІБ, ЯКІ КЕРУЮТЬ ГУЖОВИМ",
+    "section_title": "ВИМОГИ ДО ОСІБ, ЯКІ КЕРУЮТЬ ГУЖОВИМ ТРАНСПОРТОМ, І ПОГОНИЧІВ ТВАРИН",
     "question_id": 3,
     "question": "З якого боку гужового воза (саней) повинні бути встановлені ліхтарі для руху в темну пору доби?",
     "options": [
@@ -4203,7 +4203,7 @@
   },
   {
     "section": "7",
-    "section_title": "ВИМОГИ ДО ОСІБ, ЯКІ КЕРУЮТЬ ГУЖОВИМ",
+    "section_title": "ВИМОГИ ДО ОСІБ, ЯКІ КЕРУЮТЬ ГУЖОВИМ ТРАНСПОРТОМ, І ПОГОНИЧІВ ТВАРИН",
     "question_id": 4,
     "question": "Які освітлювальні прилади повинні бути ввімкнені на гужовому возі (санях) під час руху в темну пору доби, а також в умовах недостатньої видимості?",
     "options": [
@@ -4224,7 +4224,7 @@
   },
   {
     "section": "7",
-    "section_title": "ВИМОГИ ДО ОСІБ, ЯКІ КЕРУЮТЬ ГУЖОВИМ",
+    "section_title": "ВИМОГИ ДО ОСІБ, ЯКІ КЕРУЮТЬ ГУЖОВИМ ТРАНСПОРТОМ, І ПОГОНИЧІВ ТВАРИН",
     "question_id": 5,
     "question": "За яких умов дозволено перевозити людей гужовим транспортом?",
     "options": [
@@ -4245,7 +4245,7 @@
   },
   {
     "section": "7",
-    "section_title": "ВИМОГИ ДО ОСІБ, ЯКІ КЕРУЮТЬ ГУЖОВИМ",
+    "section_title": "ВИМОГИ ДО ОСІБ, ЯКІ КЕРУЮТЬ ГУЖОВИМ ТРАНСПОРТОМ, І ПОГОНИЧІВ ТВАРИН",
     "question_id": 6,
     "question": "Чи дозволено переганяти стадо тварин по дорозі в темну пору доби?",
     "options": [
@@ -4266,7 +4266,7 @@
   },
   {
     "section": "7",
-    "section_title": "ВИМОГИ ДО ОСІБ, ЯКІ КЕРУЮТЬ ГУЖОВИМ",
+    "section_title": "ВИМОГИ ДО ОСІБ, ЯКІ КЕРУЮТЬ ГУЖОВИМ ТРАНСПОРТОМ, І ПОГОНИЧІВ ТВАРИН",
     "question_id": 7,
     "question": "Чи дозволено особам, які керують гужовим транспортом, і погоничам тварин пересуватися автомобільними дорогами державного значення?",
     "options": [
@@ -4287,7 +4287,7 @@
   },
   {
     "section": "7",
-    "section_title": "ВИМОГИ ДО ОСІБ, ЯКІ КЕРУЮТЬ ГУЖОВИМ",
+    "section_title": "ВИМОГИ ДО ОСІБ, ЯКІ КЕРУЮТЬ ГУЖОВИМ ТРАНСПОРТОМ, І ПОГОНИЧІВ ТВАРИН",
     "question_id": 8,
     "question": "Що заборонено погоничам тварин?",
     "options": [
@@ -4810,7 +4810,8 @@
         "text": "Прямо і праворуч."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_51_img_0.png"
   },
   {
     "section": "8.1",
@@ -4832,7 +4833,7 @@
       }
     ],
     "answer": "1",
-    "image": "images_output/page_51_img_0.png"
+    "image": "images_output/page_51_img_1.png"
   },
   {
     "section": "8.1",
@@ -4854,7 +4855,7 @@
       }
     ],
     "answer": "1",
-    "image": "images_output/page_51_img_1.png"
+    "image": "images_output/page_51_img_2.png"
   },
   {
     "section": "8.1",
@@ -4956,7 +4957,8 @@
         "text": "Жовтому автомобілю."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_53_img_0.png"
   },
   {
     "section": "8.1",
@@ -5025,7 +5027,8 @@
         "text": "У всіх місцях."
       }
     ],
-    "answer": "1"
+    "answer": "1",
+    "image": "images_output/page_54_img_0.png"
   },
   {
     "section": "8.1",
@@ -5051,7 +5054,7 @@
       }
     ],
     "answer": "2",
-    "image": "images_output/page_54_img_0.png"
+    "image": "images_output/page_54_img_1.png"
   },
   {
     "section": "8.1",
@@ -5077,7 +5080,7 @@
       }
     ],
     "answer": "4",
-    "image": "images_output/page_54_img_1.png"
+    "image": "images_output/page_54_img_2.png"
   },
   {
     "section": "8.1",
@@ -5098,7 +5101,8 @@
         "text": "Ліворуч або у зворотному напрямку."
       }
     ],
-    "answer": "3"
+    "answer": "3",
+    "image": "images_output/page_55_img_0.png"
   },
   {
     "section": "8.1",
@@ -5128,7 +5132,7 @@
       }
     ],
     "answer": "5",
-    "image": "images_output/page_55_img_0.png"
+    "image": "images_output/page_55_img_1.png"
   },
   {
     "section": "8.1",
@@ -5150,7 +5154,7 @@
       }
     ],
     "answer": "3",
-    "image": "images_output/page_55_img_1.png"
+    "image": "images_output/page_55_img_2.png"
   },
   {
     "section": "8.1",
@@ -5180,7 +5184,7 @@
       }
     ],
     "answer": "1",
-    "image": "images_output/page_55_img_2.png"
+    "image": "images_output/page_55_img_3.png"
   },
   {
     "section": "8.1",
@@ -5267,7 +5271,8 @@
         "text": "Прямо, ліворуч і розворот."
       }
     ],
-    "answer": "4"
+    "answer": "4",
+    "image": "images_output/page_57_img_0.png"
   },
   {
     "section": "8.1",
@@ -5285,7 +5290,7 @@
       }
     ],
     "answer": "1",
-    "image": "images_output/page_57_img_0.png"
+    "image": "images_output/page_57_img_1.png"
   },
   {
     "section": "8.1",
@@ -5307,7 +5312,7 @@
       }
     ],
     "answer": "1",
-    "image": "images_output/page_57_img_1.png"
+    "image": "images_output/page_57_img_2.png"
   },
   {
     "section": "8.1",
@@ -5328,7 +5333,8 @@
         "text": "Керуючись сигналом регулювальника і світлофора, продовжити рух."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_58_img_0.png"
   },
   {
     "section": "8.1",
@@ -5350,7 +5356,7 @@
       }
     ],
     "answer": "2",
-    "image": "images_output/page_58_img_0.png"
+    "image": "images_output/page_58_img_1.png"
   },
   {
     "section": "8.1",
@@ -5372,7 +5378,7 @@
       }
     ],
     "answer": "3",
-    "image": "images_output/page_58_img_1.png"
+    "image": "images_output/page_58_img_2.png"
   },
   {
     "section": "8.1",
@@ -5397,7 +5403,8 @@
         "text": "Рух заборонено."
       }
     ],
-    "answer": "3"
+    "answer": "3",
+    "image": "images_output/page_59_img_0.png"
   },
   {
     "section": "8.1",
@@ -5418,7 +5425,8 @@
         "text": "Сигналами регулювальника."
       }
     ],
-    "answer": "3"
+    "answer": "3",
+    "image": "images_output/page_59_img_1.png"
   },
   {
     "section": "8.1",
@@ -5439,7 +5447,8 @@
         "text": "Рух заборонено транспортним засобам і пішоходам."
       }
     ],
-    "answer": "3"
+    "answer": "3",
+    "image": "images_output/page_59_img_2.png"
   },
   {
     "section": "8.1",
@@ -5456,7 +5465,8 @@
         "text": "Водій вантажного автомобіля."
       }
     ],
-    "answer": "1"
+    "answer": "1",
+    "image": "images_output/page_60_img_0.png"
   },
   {
     "section": "8.1",
@@ -5473,7 +5483,8 @@
         "text": "Дозволено."
       }
     ],
-    "answer": "1"
+    "answer": "1",
+    "image": "images_output/page_60_img_1.png"
   },
   {
     "section": "8.1",
@@ -5491,7 +5502,7 @@
       }
     ],
     "answer": "2",
-    "image": "images_output/page_60_img_1.png"
+    "image": "images_output/page_60_img_2.png"
   },
   {
     "section": "8.1",
@@ -5513,7 +5524,7 @@
       }
     ],
     "answer": "3",
-    "image": "images_output/page_60_img_2.png"
+    "image": "images_output/page_60_img_3.png"
   },
   {
     "section": "8.1",
@@ -5538,7 +5549,8 @@
         "text": "Водіям трамвая і білого автомобіля."
       }
     ],
-    "answer": "1"
+    "answer": "1",
+    "image": "images_output/page_61_img_0.png"
   },
   {
     "section": "8.1",
@@ -5589,7 +5601,8 @@
         "text": "Водієві синього автомобіля."
       }
     ],
-    "answer": "4"
+    "answer": "4",
+    "image": "images_output/page_61_img_2.png"
   },
   {
     "section": "8.1",
@@ -10395,7 +10408,8 @@
         "text": "110 км/год."
       }
     ],
-    "answer": "3"
+    "answer": "3",
+    "image": "images_output/page_114_img_0.png"
   },
   {
     "section": "12",
@@ -10417,7 +10431,7 @@
       }
     ],
     "answer": "3",
-    "image": "images_output/page_114_img_0.png"
+    "image": "images_output/page_114_img_1.png"
   },
   {
     "section": "12",
@@ -10447,7 +10461,7 @@
       }
     ],
     "answer": "3",
-    "image": "images_output/page_114_img_1.png"
+    "image": "images_output/page_114_img_2.png"
   },
   {
     "section": "12",
@@ -15637,25 +15651,18 @@
     "section_title": "ПРОЇЗД ПЕРЕХРЕСТЬ (РЕГУЛЬОВАНІ ПЕРЕХРЕСТЯ)",
     "question_id": 34,
     "question": "Чи дозволено водію чорного автомобіля повернути праворуч у даному випадку?",
-    "options": [],
+    "options": [
+      {
+        "id": 1,
+        "text": "Дозволено."
+      },
+      {
+        "id": 2,
+        "text": "Заборонено."
+      }
+    ],
     "answer": "1",
     "image": "images_output/page_182_img_0.png"
-  },
-  {
-    "section": "16.1",
-    "section_title": "ПРОЇЗД ПЕРЕХРЕСТЬ (РЕГУЛЬОВАНІ ПЕРЕХРЕСТЯ)",
-    "question_id": 1,
-    "question": "Дозволено.",
-    "options": [],
-    "answer": "2"
-  },
-  {
-    "section": "16.1",
-    "section_title": "ПРОЇЗД ПЕРЕХРЕСТЬ (РЕГУЛЬОВАНІ ПЕРЕХРЕСТЯ)",
-    "question_id": 2,
-    "question": "Заборонено.».",
-    "options": [],
-    "answer": "3"
   },
   {
     "section": "16.2",
@@ -20906,7 +20913,7 @@
       }
     ],
     "answer": "3",
-    "image": "images_output/page_248_img_0.png"
+    "image": "images_output/page_248_img_1.png"
   },
   {
     "section": "24",
@@ -22749,8 +22756,7 @@
         "text": "Несправний глушник."
       }
     ],
-    "answer": "2",
-    "image": "images_output/page_264_img_0.png"
+    "answer": "2"
   },
   {
     "section": "31",
@@ -23021,7 +23027,8 @@
         "text": "Початок ділянки дороги, рух на якій дозволено тільки механічним транспортним засобам."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_266_img_2.png"
   },
   {
     "section": "33",
@@ -23051,7 +23058,7 @@
       }
     ],
     "answer": "3",
-    "image": "images_output/page_266_img_2.png"
+    "image": "images_output/page_266_img_3.png"
   },
   {
     "section": "33",
@@ -23076,7 +23083,8 @@
         "text": "Кінець дії вимог, що стосуються руху в населених пунктах."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_267_img_0.png"
   },
   {
     "section": "33",
@@ -23094,7 +23102,7 @@
       }
     ],
     "answer": "1",
-    "image": "images_output/page_267_img_0.png"
+    "image": "images_output/page_267_img_1.png"
   },
   {
     "section": "33",
@@ -23116,7 +23124,7 @@
       }
     ],
     "answer": "3",
-    "image": "images_output/page_267_img_1.png"
+    "image": "images_output/page_267_img_2.png"
   },
   {
     "section": "33",
@@ -23146,7 +23154,7 @@
       }
     ],
     "answer": "4",
-    "image": "images_output/page_267_img_2.png"
+    "image": "images_output/page_267_img_3.png"
   },
   {
     "section": "33",
@@ -23271,7 +23279,8 @@
         "text": "З лівого боку."
       }
     ],
-    "answer": "3"
+    "answer": "3",
+    "image": "images_output/page_269_img_0.png"
   },
   {
     "section": "33",
@@ -23293,7 +23302,7 @@
       }
     ],
     "answer": "3",
-    "image": "images_output/page_269_img_0.png"
+    "image": "images_output/page_269_img_1.png"
   },
   {
     "section": "33",
@@ -23311,7 +23320,7 @@
       }
     ],
     "answer": "2",
-    "image": "images_output/page_269_img_1.png"
+    "image": "images_output/page_269_img_2.png"
   },
   {
     "section": "33",
@@ -23341,7 +23350,7 @@
       }
     ],
     "answer": "5",
-    "image": "images_output/page_269_img_2.png"
+    "image": "images_output/page_269_img_3.png"
   },
   {
     "section": "33",
@@ -23371,7 +23380,7 @@
       }
     ],
     "answer": "5",
-    "image": "images_output/page_269_img_3.png"
+    "image": "images_output/page_269_img_4.png"
   },
   {
     "section": "33",
@@ -23590,7 +23599,8 @@
         "text": "Знак 5."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_271_img_3.png"
   },
   {
     "section": "33",
@@ -23737,7 +23747,8 @@
         "text": "Знак 5."
       }
     ],
-    "answer": "5"
+    "answer": "5",
+    "image": "images_output/page_273_img_0.png"
   },
   {
     "section": "33",
@@ -24260,7 +24271,8 @@
         "text": "З 7:00 до 24:00."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_279_img_1.png"
   },
   {
     "section": "33",
@@ -24451,7 +24463,8 @@
         "text": "Обидва водії."
       }
     ],
-    "answer": "3"
+    "answer": "3",
+    "image": "images_output/page_281_img_1.png"
   },
   {
     "section": "33",
@@ -24740,7 +24753,8 @@
         "text": "Нікому."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_284_img_2.png"
   },
   {
     "section": "33",
@@ -25045,7 +25059,8 @@
         "text": "Тільки прямо."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_288_img_0.png"
   },
   {
     "section": "33",
@@ -25067,7 +25082,7 @@
       }
     ],
     "answer": "2",
-    "image": "images_output/page_288_img_2.png"
+    "image": "images_output/page_288_img_1.png"
   },
   {
     "section": "33",
@@ -25093,7 +25108,7 @@
       }
     ],
     "answer": "2",
-    "image": "images_output/page_288_img_3.png"
+    "image": "images_output/page_288_img_2.png"
   },
   {
     "section": "33",
@@ -25119,7 +25134,7 @@
       }
     ],
     "answer": "3",
-    "image": "images_output/page_288_img_1.png"
+    "image": "images_output/page_288_img_3.png"
   },
   {
     "section": "33",
@@ -26718,7 +26733,8 @@
         "text": "Знак 5."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_302_img_1.png"
   },
   {
     "section": "33",
@@ -28073,7 +28089,8 @@
         "text": "Безпосередньо перед таким місцем."
       }
     ],
-    "answer": "3"
+    "answer": "3",
+    "image": "images_output/page_313_img_3.png"
   },
   {
     "section": "33",
@@ -28198,7 +28215,8 @@
         "text": "Знак 4."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_314_img_3.png"
   },
   {
     "section": "33",
@@ -29197,7 +29215,8 @@
         "text": "Є нерівності проїзної частини – хвилястості, напливи, спучування."
       }
     ],
-    "answer": "1"
+    "answer": "1",
+    "image": "images_output/page_323_img_1.png"
   },
   {
     "section": "33",
@@ -29636,7 +29655,8 @@
         "text": "Заборонено."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_329_img_0.png"
   },
   {
     "section": "33",
@@ -30441,7 +30461,8 @@
         "text": "Знак 5."
       }
     ],
-    "answer": "1"
+    "answer": "1",
+    "image": "images_output/page_337_img_2.png"
   },
   {
     "section": "33",
@@ -30471,7 +30492,7 @@
       }
     ],
     "answer": "3",
-    "image": "images_output/page_337_img_2.png"
+    "image": "images_output/page_337_img_3.png"
   },
   {
     "section": "33",
@@ -30594,7 +30615,8 @@
         "text": "Водій зупинився перед знаком «Проїзд без зупинки заборонено» і не дав нікому дорогу."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_339_img_0.png"
   },
   {
     "section": "33",
@@ -40765,7 +40787,8 @@
         "text": "Високу температуру теплоносія."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_444_img_0.png"
   },
   {
     "section": "45",
@@ -40791,7 +40814,7 @@
       }
     ],
     "answer": "4",
-    "image": "images_output/page_444_img_0.png"
+    "image": "images_output/page_444_img_1.png"
   },
   {
     "section": "45",
@@ -40813,15 +40836,29 @@
       }
     ],
     "answer": "1",
-    "image": "images_output/page_444_img_1.png"
+    "image": "images_output/page_444_img_2.png"
   },
   {
     "section": "45",
     "section_title": "ДОДАТКОВІ ПИТАННЯ ЩОДО КАТЕГОРІЙ В1,",
     "question_id": 16,
-    "question": "Наведений індикатор червоного кольору інформує про: Відчинені двері автомобіля. Блокування дверей автомобіля. Відчинені двері багажника.",
-    "options": [],
-    "answer": "1"
+    "question": "Наведений індикатор червоного кольору інформує про:",
+    "options": [
+      {
+        "id": 1,
+        "text": "Відчинені двері автомобіля."
+      },
+      {
+        "id": 2,
+        "text": "Блокування дверей автомобіля."
+      },
+      {
+        "id": 3,
+        "text": "Відчинені двері багажника."
+      }
+    ],
+    "answer": "1",
+    "image": "images_output/page_445_img_0.png"
   },
   {
     "section": "45",
@@ -46079,7 +46116,8 @@
         "text": "Знак 5."
       }
     ],
-    "answer": "5"
+    "answer": "5",
+    "image": "images_output/page_491_img_1.png"
   },
   {
     "section": "52",
@@ -46109,7 +46147,7 @@
       }
     ],
     "answer": "3",
-    "image": "images_output/page_491_img_0.png"
+    "image": "images_output/page_492_img_0.png"
   },
   {
     "section": "52",
@@ -49346,7 +49384,7 @@
       }
     ],
     "answer": "3",
-    "image": "images_output/page_517_img_0.png"
+    "image": "images_output/page_517_img_2.png"
   },
   {
     "section": "55",
@@ -50148,7 +50186,8 @@
         "text": "Заборонено."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_524_img_0.png"
   },
   {
     "section": "56",
