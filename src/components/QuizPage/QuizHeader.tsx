@@ -27,29 +27,29 @@ export default function QuizHeader({
       <div className="flex items-center justify-between mb-2 gap-4 flex-wrap">
         <Link
           href={backHref}
-          className="flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 transition-colors"
+          className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors"
         >
           <IoMdArrowBack className="w-4 h-4" />
           {backLabel}
         </Link>
 
-        <span className="text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest">
+        <span className="text-xs font-bold text-blue-600 uppercase tracking-widest">
           {quizLabel}
         </span>
 
         <div className="flex items-center gap-3 text-sm font-semibold">
-          <div className="flex items-center gap-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-3 py-1.5 shadow-sm text-slate-600 dark:text-slate-400">
-            <IoMdStopwatch className="w-4 h-4 text-slate-400 dark:text-slate-500" />
+          <div className="flex items-center gap-1.5 bg-white border border-slate-200 rounded-xl px-3 py-1.5 shadow-sm text-slate-600">
+            <IoMdStopwatch className="w-4 h-4 text-slate-400" />
             <span className="tabular-nums">{formatTime(totalSeconds)}</span>
           </div>
 
-          <span className="text-slate-400 dark:text-slate-500">
+          <span className="text-slate-400">
             {currentIdx + 1} / {totalQuestions}
           </span>
         </div>
       </div>
 
-      <h1 className="text-xl font-bold text-slate-900 dark:text-slate-200 leading-snug">
+      <h1 className="text-xl font-bold text-slate-900 leading-snug">
         {quizTitle}
       </h1>
     </header>

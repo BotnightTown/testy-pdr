@@ -22,7 +22,6 @@ import { AnswerResult } from "@/types/question.types";
 
 export default function QuizPage() {
   const { id } = useParams();
-  const router = useRouter();
 
   const [currentIdx, setCurrentIdx] = useState(0);
 
@@ -68,10 +67,14 @@ export default function QuizPage() {
   );
 
   useEffect(() => {
-    if (showResultsModal) {
-      stopTotalTimer();
+    if (!answerResults[currentIdx]) {
+      startQuestionTimer();
+    } else {
+      stopQuestionTimer();
+
+      setQuestionSeconds(answerResults[currentIdx].timeSpent);
     }
-  }, [showResultsModal, stopTotalTimer]);
+  }, [currentIdx]);
 
   const goToQuestion = useCallback((index: number) => {
     if (nextQuestionTimeout.current) {
@@ -103,6 +106,7 @@ export default function QuizPage() {
       const nextAnsweredCount = answeredCount + 1;
 
       if (nextAnsweredCount === themeQuestions.length) {
+        stopTotalTimer();
         setTimeout(() => {
           setShowResultsModal(true);
         }, 500);
@@ -130,7 +134,7 @@ export default function QuizPage() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 dark:bg-slate-900 py-8 px-4 sm:px-6">
+    <main className="min-h-screen bg-slate-50 py-8 px-4 sm:px-6">
       <div className="max-w-3xl mx-auto">
         <QuizHeader
           quizLabel={quizLabel}

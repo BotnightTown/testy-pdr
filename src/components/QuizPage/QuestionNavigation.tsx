@@ -21,12 +21,12 @@ function QuestionNavigationComponent({
         const answerResult = answerResults[index];
 
         const styles = answerResult?.isCorrect
-          ? "border-green-500 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400"
+          ? "border-green-500 bg-green-50 text-green-700"
           : answerResult
-            ? "border-red-500 bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400"
+            ? "border-red-500 bg-red-50 text-red-700"
             : isActive
-              ? "border-slate-400 dark:border-slate-500 bg-slate-100 dark:bg-slate-700 text-slate-900 dark:text-slate-100"
-              : "border-slate-200 dark:border-slate-600 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400";
+              ? "border-slate-400 bg-slate-100 text-slate-900"
+              : "border-slate-200 bg-slate-50 text-slate-600";
 
         return (
           <button

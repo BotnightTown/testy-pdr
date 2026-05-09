@@ -27,7 +27,7 @@ export default function QuestionImages({ images, descriptions }: Props) {
 
         return (
           <div key={`${img}-${index}`} className="flex flex-col gap-3">
-            <div className="relative min-h-62.5 overflow-hidden rounded-2xl border border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 shadow-sm">
+            <div className="relative min-h-62.5 overflow-hidden rounded-2xl border border-slate-100 bg-slate-50 shadow-sm">
               <Image
                 src={getFullImageSrc(img)}
                 alt={description || `Ілюстрація ${index + 1}`}
