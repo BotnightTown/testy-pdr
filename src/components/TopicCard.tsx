@@ -5,7 +5,7 @@ export default function QuizCard({ id, title, questionCount }: QuestionTheme) {
   return (
     <Link
       href={`/quiz/${id}`}
-      className="group flex items-center gap-4 p-5 bg-white border border-slate-200 rounded-2xl hover:border-blue-400 hover:shadow-sm transition-all cursor-pointer"
+      className="group flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-2xl hover:border-blue-400 hover:shadow-sm transition-all cursor-pointer"
     >
       <div className="shrink-0 flex items-center justify-center w-12 h-12 bg-slate-100 text-slate-600 font-bold rounded-xl group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">
         {id}

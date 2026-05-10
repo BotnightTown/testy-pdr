@@ -23,7 +23,7 @@ export default function QuizHeader({
   backLabel,
 }: Props) {
   return (
-    <header className="mb-8">
+    <header className="mb-3">
       <div className="flex items-center justify-between mb-2 gap-4 flex-wrap">
         <Link
           href={backHref}

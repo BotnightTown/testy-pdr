@@ -52,7 +52,7 @@ function AnswerOptionComponent({
     <button
       onClick={() => onClick(optionId)}
       disabled={isAnswered}
-      className={`w-full text-left p-4 rounded-xl border transition-all flex gap-4 items-start cursor-pointer group disabled:cursor-default ${buttonStyles}`}
+      className={`w-full text-left p-2 rounded-xl border transition-all flex gap-4 items-center flex-row justify-start cursor-pointer group disabled:cursor-default ${buttonStyles}`}
     >
       <span
         className={`shrink-0 flex items-center justify-center w-7 h-7 rounded-lg text-xs font-bold transition-colors ${optionNumberStyles}`}

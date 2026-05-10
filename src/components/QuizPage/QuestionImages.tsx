@@ -18,7 +18,7 @@ export default function QuestionImages({ images, descriptions }: Props) {
 
   return (
     <div
-      className={`mb-8 grid gap-6 ${
+      className={`mb-4 grid gap-6 ${
         imagesArray.length > 1 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"
       }`}
     >
@@ -27,7 +27,7 @@ export default function QuestionImages({ images, descriptions }: Props) {
 
         return (
           <div key={`${img}-${index}`} className="flex flex-col gap-3">
-            <div className="relative min-h-62.5 overflow-hidden rounded-2xl border border-slate-100 bg-slate-50 shadow-sm">
+            <div className="relative min-h-62.5 h-62.5 overflow-hidden rounded-xl border border-slate-100 bg-slate-50 shadow-sm">
               <Image
                 src={getFullImageSrc(img)}
                 alt={description || `Ілюстрація ${index + 1}`}

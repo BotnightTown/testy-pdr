@@ -1,5 +1,4 @@
-import Link from "next/link";
-import RandomQuizCard from "@/components/RandomQuizCard";
+import MainPageCard from "@/components/MainPageCard";
 
 export default function Home() {
   return (
@@ -13,45 +12,24 @@ export default function Home() {
         </header>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <RandomQuizCard />
-
-          <Link
-            href="/topics"
-            className="group flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-blue-400 hover:shadow-sm"
-          >
-            <div>
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-lg font-extrabold text-slate-600 transition-colors group-hover:bg-blue-50 group-hover:text-blue-600">
-                #
-              </div>
-              <h2 className="text-xl font-bold text-slate-900">
-                Питання по темах
-              </h2>
-              <p className="mt-2 text-sm leading-6 text-slate-500">
-                Оберіть конкретний розділ правил дорожнього руху.
-              </p>
-            </div>
-            <span className="mt-8 text-sm font-bold text-blue-600">
-              Перейти до тем
-            </span>
-          </Link>
-
-          <Link
-            href="/settings"
-            className="group flex h-full flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:border-blue-400 hover:shadow-sm"
-          >
-            <div>
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-lg font-extrabold text-slate-600 transition-colors group-hover:bg-blue-50 group-hover:text-blue-600">
-                ⚙
-              </div>
-              <h2 className="text-xl font-bold text-slate-900">Налаштування</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-500">
-                Оберіть категорії водіння для навчання.
-              </p>
-            </div>
-            <span className="mt-8 text-sm font-bold text-blue-600">
-              Вибрати категорії
-            </span>
-          </Link>
+          <MainPageCard
+            title="20 випадкових питань"
+            description="Швидке тренування з питань усіх тем."
+            link={`/quiz/random-${Date.now()}`}
+            buttonText="Почати тестування"
+          />
+          <MainPageCard
+            title="Питання по темах"
+            description="Оберіть конкретний розділ правил дорожнього руху."
+            link="/topics"
+            buttonText="Перейти до тем"
+          />
+          <MainPageCard
+            title="Налаштування категорій"
+            description="Оберіть категорії водіння для навчання."
+            link="/settings"
+            buttonText="Вибрати категорії"
+          />
         </div>
       </div>
     </main>
