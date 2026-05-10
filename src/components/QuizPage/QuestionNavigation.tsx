@@ -5,6 +5,7 @@ interface Props {
   questions: any[];
   currentIdx: number;
   answerResults: Record<number, AnswerResult>;
+  isExam?: boolean;
   onNavigate: (index: number) => void;
 }
 
@@ -12,6 +13,7 @@ function QuestionNavigationComponent({
   questions,
   currentIdx,
   answerResults,
+  isExam = false,
   onNavigate,
 }: Props) {
   return (
@@ -19,6 +21,7 @@ function QuestionNavigationComponent({
       {questions.map((question, index) => {
         const isActive = index === currentIdx;
         const answerResult = answerResults[index];
+        const isDisabled = isExam && Boolean(answerResult) && !isActive;
 
         const styles = answerResult?.isCorrect
           ? "border-green-500 bg-green-50 text-green-700"
@@ -32,7 +35,8 @@ function QuestionNavigationComponent({
           <button
             key={`${question.section}-${question.question_id}`}
             onClick={() => onNavigate(index)}
-            className={`flex h-10 min-w-10 items-center justify-center rounded-xl border text-sm font-bold transition-colors cursor-pointer ${styles}`}
+            disabled={isDisabled}
+            className={`flex h-10 min-w-10 items-center justify-center rounded-xl border text-sm font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${isDisabled ? "" : "cursor-pointer"} ${styles}`}
           >
             {index + 1}
           </button>

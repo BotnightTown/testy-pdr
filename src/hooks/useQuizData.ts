@@ -12,23 +12,34 @@ export function useQuizData(
 ) {
   return useMemo(() => {
     const isRandomQuiz = themeId?.startsWith("random-") ?? false;
+    const isExam = themeId?.startsWith("exam-") ?? false;
+    const isGeneratedQuiz = isRandomQuiz || isExam;
 
-    const themeQuestions = isRandomQuiz
+    const themeQuestions = isGeneratedQuiz
       ? getRandomQuestions(20, undefined, themeId, selectedCategoryIds)
       : getQuestionsByTheme(themeId ?? "");
 
-    const themeInfo = isRandomQuiz
+    const themeInfo = isGeneratedQuiz
       ? undefined
       : getQuestionTheme(themeId ?? "");
 
     return {
       isRandomQuiz,
+      isExam,
       themeQuestions,
       themeInfo,
-      quizTitle: isRandomQuiz ? "20 випадкових питань" : themeInfo?.title,
-      quizLabel: isRandomQuiz ? "Випадковий тест" : `Тема #${themeId}`,
-      backHref: isRandomQuiz ? "/" : "/topics",
-      backLabel: isRandomQuiz ? "На головну" : "Назад до тем",
+      quizTitle: isExam
+        ? "Екзамен"
+        : isRandomQuiz
+          ? "20 випадкових питань"
+          : themeInfo?.title,
+      quizLabel: isExam
+        ? "Екзаменаційний режим"
+        : isRandomQuiz
+          ? "Випадковий тест"
+          : `Тема #${themeId}`,
+      backHref: isGeneratedQuiz ? "/" : "/topics",
+      backLabel: isGeneratedQuiz ? "На головну" : "Назад до тем",
     };
   }, [themeId, selectedCategoryIds]);
 }
