@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import QuizCard from "@/components/QuizCard";
+import QuizCard from "@/components/TopicCard";
 import { useDrivingCategorySettings } from "@/hooks/useDrivingCategorySettings";
 import { getQuestionThemesByCategories } from "@/lib/quiz-service";
 
@@ -12,7 +12,7 @@ export default function TopicsPage() {
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-5xl">
-        <nav className="mb-8 flex flex-wrap items-center justify-between gap-3">
+        <nav className="flex flex-wrap items-center justify-between gap-3">
           <Link
             href="/"
             className="font-medium text-slate-500 transition-colors hover:text-slate-800"
@@ -27,7 +27,7 @@ export default function TopicsPage() {
           </Link>
         </nav>
 
-        <header className="mb-10 text-center">
+        <header className="my-6 text-center">
           <h1 className="text-4xl font-extrabold tracking-tight text-slate-900">
             Питання по темах
           </h1>

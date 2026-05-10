@@ -40988,7 +40988,8 @@
         "text": "Ні."
       }
     ],
-    "answer": "1"
+    "answer": "1",
+    "image": "images_output/page_447_img_0.png"
   },
   {
     "section": "45",
@@ -41010,7 +41011,7 @@
       }
     ],
     "answer": "1",
-    "image": "images_output/page_447_img_0.png"
+    "image": "images_output/page_447_img_1.png"
   },
   {
     "section": "45",
@@ -41028,7 +41029,7 @@
       }
     ],
     "answer": "2",
-    "image": "images_output/page_447_img_1.png"
+    "image": "images_output/page_447_img_2.png"
   },
   {
     "section": "45",
@@ -41049,7 +41050,8 @@
         "text": "Несправність керма."
       }
     ],
-    "answer": "1"
+    "answer": "1",
+    "image": "images_output/page_448_img_1.png"
   },
   {
     "section": "45",
@@ -41067,7 +41069,7 @@
       }
     ],
     "answer": "1",
-    "image": "images_output/page_448_img_0.png"
+    "image": "images_output/page_448_img_2.png"
   },
   {
     "section": "45",
@@ -41084,7 +41086,8 @@
         "text": "Індикатор зеленого кольору."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images_output/page_448_img_3.png"
   },
   {
     "section": "45",
@@ -41105,7 +41108,8 @@
         "text": "Низький рівень палива у паливному баку."
       }
     ],
-    "answer": "1"
+    "answer": "1",
+    "image": "images_output/page_449_img_0.png"
   },
   {
     "section": "45",
@@ -41135,7 +41139,7 @@
       }
     ],
     "answer": "1",
-    "image": "images_output/page_449_img_0.png"
+    "image": "images_output/page_449_img_1.png"
   },
   {
     "section": "45",
@@ -41161,7 +41165,7 @@
       }
     ],
     "answer": "2",
-    "image": "images_output/page_449_img_1.png"
+    "image": "images_output/page_449_img_21.png"
   },
   {
     "section": "45",

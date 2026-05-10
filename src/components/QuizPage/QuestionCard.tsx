@@ -14,8 +14,8 @@ export default function QuestionCard({
   onAnswer,
 }: Props) {
   return (
-    <div className="bg-white border border-slate-200 rounded-3xl p-5 sm:p-8 shadow-sm transition-all">
-      <p className="text-lg text-slate-800 font-semibold mb-6">
+    <div className="bg-white border border-slate-200 rounded-xl p-4 sm:p-8 shadow-sm transition-all">
+      <p className="text-lg text-slate-800 font-semibold mb-3">
         {currentQuestion.question}
       </p>
 

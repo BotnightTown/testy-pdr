@@ -15,7 +15,7 @@ function QuestionNavigationComponent({
   onNavigate,
 }: Props) {
   return (
-    <div className="mb-6 flex gap-2 overflow-x-auto pb-2">
+    <div className="mb-3 flex gap-2 overflow-x-auto pb-2">
       {questions.map((question, index) => {
         const isActive = index === currentIdx;
         const answerResult = answerResults[index];
