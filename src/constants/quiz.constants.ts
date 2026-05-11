@@ -1,11 +1,51 @@
-export const RANDOM_QUIZ_TITLE = "20 випадкових питань";
+import { DrivingCategory, DrivingCategoryId } from "@/types/question.types";
 
-export const RANDOM_QUIZ_LABEL = "Випадковий тест";
+export const EXAM_TIME_LIMIT_SECONDS = 20 * 60;
+export const EXAM_MAX_WRONG_ANSWERS = 2;
 
-export const QUESTION_AUTO_NEXT_DELAY = 600;
+export const CATEGORY_IDS: DrivingCategoryId[] = ["A", "B", "C", "D", "E", "T"];
 
-export const RESULTS_MODAL_DELAY = 500;
+export const CATEGORY_ID_SET = new Set<string>(CATEGORY_IDS);
 
-export const QUESTION_WARNING_TIME = 30;
+export const CATEGORY_SETTINGS_STORAGE_KEY = "testy-pdr-driving-categories";
 
-export const TOTAL_RANDOM_QUESTIONS = 20;
+export const DEFAULT_DRIVING_CATEGORY_IDS: DrivingCategoryId[] = [];
+
+export const DRIVING_CATEGORIES: DrivingCategory[] = [
+  {
+    id: "A",
+    title: "A1, A",
+    description: "Мотоцикли та мопеди",
+    sections: ["40", "41", "42", "43"],
+  },
+  {
+    id: "B",
+    title: "B1, B",
+    description: "Легкові автомобілі",
+    sections: ["44", "45", "46", "47"],
+  },
+  {
+    id: "C",
+    title: "C1, C",
+    description: "Вантажні автомобілі",
+    sections: ["48", "49", "50", "51"],
+  },
+  {
+    id: "D",
+    title: "D1, D",
+    description: "Автобуси",
+    sections: ["52", "53", "54", "55"],
+  },
+  {
+    id: "E",
+    title: "BE, C1E, CE, D1E, DE",
+    description: "Состави транспортних засобів",
+    sections: ["56", "57", "58", "59"],
+  },
+  {
+    id: "T",
+    title: "T",
+    description: "Трамваї та тролейбуси",
+    sections: ["60", "61", "62", "63"],
+  },
+];

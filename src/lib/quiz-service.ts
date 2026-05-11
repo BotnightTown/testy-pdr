@@ -1,3 +1,4 @@
+import { DRIVING_CATEGORIES } from "@/constants/quiz.constants";
 import questionData from "@/data/questions.json";
 import {
   DrivingCategory,
@@ -9,53 +10,17 @@ import {
 type RawQuestion = Omit<Question, "image" | "image_description"> &
   Partial<Pick<Question, "image" | "image_description">>;
 
-const questions: Question[] = (questionData as RawQuestion[]).map((question) => ({
-  ...question,
-  image: question.image ?? "",
-  image_description: question.image_description ?? [],
-}));
+const questions: Question[] = (questionData as RawQuestion[]).map(
+  (question) => ({
+    ...question,
+    image: question.image ?? "",
+    image_description: question.image_description ?? [],
+  }),
+);
 
-const normalizeThemeId = (id: QuestionTheme["id"] | Question["section"]): string =>
-  id;
-
-export const DRIVING_CATEGORIES: DrivingCategory[] = [
-  {
-    id: "A",
-    title: "A1, A",
-    description: "Мотоцикли та мопеди",
-    sections: ["40", "41", "42", "43"],
-  },
-  {
-    id: "B",
-    title: "B1, B",
-    description: "Легкові автомобілі",
-    sections: ["44", "45", "46", "47"],
-  },
-  {
-    id: "C",
-    title: "C1, C",
-    description: "Вантажні автомобілі",
-    sections: ["48", "49", "50", "51"],
-  },
-  {
-    id: "D",
-    title: "D1, D",
-    description: "Автобуси",
-    sections: ["52", "53", "54", "55"],
-  },
-  {
-    id: "E",
-    title: "BE, C1E, CE, D1E, DE",
-    description: "Состави транспортних засобів",
-    sections: ["56", "57", "58", "59"],
-  },
-  {
-    id: "T",
-    title: "T",
-    description: "Трамваї та тролейбуси",
-    sections: ["60", "61", "62", "63"],
-  },
-];
+const normalizeThemeId = (
+  id: QuestionTheme["id"] | Question["section"],
+): string => id;
 
 const getSeedValue = (seed: string): number => {
   return seed.split("").reduce((hash, char) => {
@@ -102,7 +67,7 @@ export function getDrivingCategories(): DrivingCategory[] {
 }
 
 export function getAllowedThemeSections(
-  categoryIds: DrivingCategoryId[]
+  categoryIds: DrivingCategoryId[],
 ): Set<Question["section"]> {
   const selectedCategories = new Set(categoryIds);
   const allowedSections = new Set<Question["section"]>();
@@ -125,7 +90,7 @@ export function getAllowedThemeSections(
 }
 
 export function getQuestionThemesByCategories(
-  categoryIds: DrivingCategoryId[]
+  categoryIds: DrivingCategoryId[],
 ): QuestionTheme[] {
   const allowedSections = getAllowedThemeSections(categoryIds);
 
@@ -133,7 +98,7 @@ export function getQuestionThemesByCategories(
 }
 
 export function getQuestionsByCategories(
-  categoryIds: DrivingCategoryId[]
+  categoryIds: DrivingCategoryId[],
 ): Question[] {
   const allowedSections = getAllowedThemeSections(categoryIds);
 
@@ -141,17 +106,17 @@ export function getQuestionsByCategories(
 }
 
 export function getQuestionTheme(
-  themeId: QuestionTheme["id"] | Question["section"]
+  themeId: QuestionTheme["id"] | Question["section"],
 ): QuestionTheme | undefined {
   const normalizedThemeId = normalizeThemeId(themeId);
 
   return getQuestionThemes().find(
-    (theme) => normalizeThemeId(theme.id) === normalizedThemeId
+    (theme) => normalizeThemeId(theme.id) === normalizedThemeId,
   );
 }
 
 export function getQuestionsByTheme(
-  themeId: QuestionTheme["id"] | Question["section"]
+  themeId: QuestionTheme["id"] | Question["section"],
 ): Question[] {
   const normalizedThemeId = normalizeThemeId(themeId);
 
@@ -160,10 +125,10 @@ export function getQuestionsByTheme(
 
 export function getQuestionById(
   themeId: QuestionTheme["id"] | Question["section"],
-  questionId: Question["question_id"]
+  questionId: Question["question_id"],
 ): Question | undefined {
   return getQuestionsByTheme(themeId).find(
-    (question) => question.question_id === questionId
+    (question) => question.question_id === questionId,
   );
 }
 
@@ -171,7 +136,7 @@ export function getRandomQuestions(
   count: number,
   themeId?: QuestionTheme["id"] | Question["section"],
   seed?: string,
-  categoryIds?: DrivingCategoryId[]
+  categoryIds?: DrivingCategoryId[],
 ): Question[] {
   const sourceQuestions =
     themeId === undefined
@@ -195,7 +160,7 @@ export function getRandomQuestions(
 
 export function isCorrectAnswer(
   question: Question,
-  optionId: number | string
+  optionId: number | string,
 ): boolean {
   return question.answer === String(optionId);
 }

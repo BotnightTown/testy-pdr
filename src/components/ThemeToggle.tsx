@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 export default function ThemeToggle() {
   const [isDark, setIsDark] = useState(() => {
@@ -13,7 +13,6 @@ export default function ThemeToggle() {
   });
 
   useLayoutEffect(() => {
-    // Застосовуємо тему при монтажі
     if (isDark) {
       document.documentElement.classList.add("dark");
     } else {

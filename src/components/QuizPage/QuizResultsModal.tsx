@@ -66,7 +66,7 @@ export default function QuizResultsModal({
 
           <Link
             href="/"
-            className="rounded-xl bg-slate-900 px-4 py-3 text-center font-bold text-white transition-colors hover:bg-slate-800"
+            className="rounded-xl bg-slate-900 px-4 py-3 text-center flex items-center justify-center font-bold text-white transition-colors hover:bg-slate-800"
           >
             На головне меню
           </Link>

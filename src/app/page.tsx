@@ -1,3 +1,4 @@
+import GeneratedQuizCard from "@/components/GeneratedQuizCard";
 import MainPageCard from "@/components/MainPageCard";
 
 export default function Home() {
@@ -12,16 +13,16 @@ export default function Home() {
         </header>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <MainPageCard
+          <GeneratedQuizCard
             title="20 випадкових питань"
             description="Швидке тренування з питань усіх тем."
-            link={`/quiz/random-${Date.now()}`}
+            mode="random"
             buttonText="Почати тестування"
           />
-          <MainPageCard
+          <GeneratedQuizCard
             title="Іспит"
             description="Іспит як у сервісному центрі МВС."
-            link={`/quiz/exam-${Date.now()}`}
+            mode="exam"
             buttonText="Почати тестування"
           />
           <MainPageCard
