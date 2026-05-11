@@ -59,14 +59,14 @@ export default function QuizResultsModal({
         <div className="mt-8 grid gap-3 sm:grid-cols-2">
           <button
             onClick={onReview}
-            className="rounded-xl border border-slate-300 bg-white px-4 py-3 font-bold text-slate-700 transition-colors hover:bg-slate-50"
+            className="rounded-xl border border-slate-300 bg-white px-4 py-3 font-bold text-slate-700 transition-colors hover:bg-slate-50 cursor-pointer"
           >
             Залишитися і проаналізувати
           </button>
 
           <Link
             href="/"
-            className="rounded-xl bg-slate-900 px-4 py-3 text-center flex items-center justify-center font-bold text-white transition-colors hover:bg-slate-800"
+            className="rounded-xl bg-slate-900 px-4 py-3 text-center flex items-center justify-center font-bold text-white transition-colors hover:bg-slate-800 cursor-pointer"
           >
             На головне меню
           </Link>

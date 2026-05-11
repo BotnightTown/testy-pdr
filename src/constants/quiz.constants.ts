@@ -1,7 +1,7 @@
 import { DrivingCategory, DrivingCategoryId } from "@/types/question.types";
 
 export const EXAM_TIME_LIMIT_SECONDS = 20 * 60;
-export const EXAM_MAX_WRONG_ANSWERS = 2;
+export const EXAM_MAX_WRONG_ANSWERS = 3;
 
 export const CATEGORY_IDS: DrivingCategoryId[] = ["A", "B", "C", "D", "E", "T"];
 
