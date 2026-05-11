@@ -1,12 +1,15 @@
 "use client";
 
+import Link from "next/link";
+
 interface QuizResultsModalProps {
   isOpen: boolean;
   correctAnswers: number;
   wrongAnswers: number;
   totalQuestions: number;
   totalTime: string;
-  onClose: () => void;
+  isExamFailed: boolean;
+  onReview: () => void;
 }
 
 export default function QuizResultsModal({
@@ -15,7 +18,8 @@ export default function QuizResultsModal({
   wrongAnswers,
   totalQuestions,
   totalTime,
-  onClose,
+  isExamFailed,
+  onReview,
 }: QuizResultsModalProps) {
   if (!isOpen) return null;
 
@@ -23,7 +27,7 @@ export default function QuizResultsModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
       <div className="w-full max-w-md rounded-3xl bg-white p-8 shadow-2xl">
         <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">
-          Тест завершено 🎉
+          {isExamFailed ? "Іспит провалено ❌" : "Тест завершено 🎉"}
         </h2>
 
         <div className="space-y-4">
@@ -52,12 +56,21 @@ export default function QuizResultsModal({
           </div>
         </div>
 
-        <button
-          onClick={onClose}
-          className="mt-8 w-full rounded-xl bg-slate-900 py-3 font-bold text-white hover:bg-slate-800 transition-colors"
-        >
-          Закрити
-        </button>
+        <div className="mt-8 grid gap-3 sm:grid-cols-2">
+          <button
+            onClick={onReview}
+            className="rounded-xl border border-slate-300 bg-white px-4 py-3 font-bold text-slate-700 transition-colors hover:bg-slate-50"
+          >
+            Залишитися і проаналізувати
+          </button>
+
+          <Link
+            href="/"
+            className="rounded-xl bg-slate-900 px-4 py-3 text-center font-bold text-white transition-colors hover:bg-slate-800"
+          >
+            На головне меню
+          </Link>
+        </div>
       </div>
     </div>
   );

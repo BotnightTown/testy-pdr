@@ -21,25 +21,25 @@ import { formatTime } from "@/utils/formatTime";
 import { AnswerResult } from "@/types/question.types";
 
 export default function QuizPage() {
+  const EXAM_TIME_LIMIT_SECONDS = 20 * 60;
+  const EXAM_MAX_WRONG_ANSWERS = 2;
+
   const { id } = useParams();
-
   const [currentIdx, setCurrentIdx] = useState(0);
-
   const [answerResults, setAnswerResults] = useState<
     Record<number, AnswerResult>
   >({});
-
   const [showResultsModal, setShowResultsModal] = useState(false);
-
+  const [isQuizFinished, setIsQuizFinished] = useState(false);
+  const [isExamReviewMode, setIsExamReviewMode] = useState(false);
   const nextQuestionTimeout = useRef<ReturnType<typeof setTimeout> | null>(
     null,
   );
-
   const [selectedCategoryIds] = useDrivingCategorySettings();
 
   const themeId = Array.isArray(id) ? id[0] : id;
 
-  const { themeQuestions, quizTitle, quizLabel, backHref, backLabel } =
+  const { isExam, themeQuestions, quizTitle, quizLabel, backHref, backLabel } =
     useQuizData(themeId, selectedCategoryIds);
 
   const {
@@ -66,7 +66,32 @@ export default function QuizPage() {
     [answerResults],
   );
 
+  const wrongCount = answeredCount - correctCount;
+  const isExamFailed = isExam && wrongCount >= EXAM_MAX_WRONG_ANSWERS;
+
+  const finishQuiz = useCallback(
+    (delay = 500) => {
+      if (nextQuestionTimeout.current) {
+        clearTimeout(nextQuestionTimeout.current);
+      }
+
+      stopQuestionTimer();
+      stopTotalTimer();
+      setIsQuizFinished(true);
+
+      setTimeout(() => {
+        setShowResultsModal(true);
+      }, delay);
+    },
+    [stopQuestionTimer, stopTotalTimer],
+  );
+
   useEffect(() => {
+    if (isQuizFinished) {
+      stopQuestionTimer();
+      return;
+    }
+
     if (!answerResults[currentIdx]) {
       startQuestionTimer();
     } else {
@@ -74,19 +99,58 @@ export default function QuizPage() {
 
       setQuestionSeconds(answerResults[currentIdx].timeSpent);
     }
-  }, [currentIdx]);
+  }, [
+    answerResults,
+    currentIdx,
+    isQuizFinished,
+    startQuestionTimer,
+    stopQuestionTimer,
+    setQuestionSeconds,
+  ]);
 
-  const goToQuestion = useCallback((index: number) => {
-    if (nextQuestionTimeout.current) {
-      clearTimeout(nextQuestionTimeout.current);
+  useEffect(() => {
+    if (!isExam || showResultsModal || totalSeconds < EXAM_TIME_LIMIT_SECONDS) {
+      return;
     }
 
-    setCurrentIdx(index);
-  }, []);
+    finishQuiz(0);
+  }, [
+    EXAM_TIME_LIMIT_SECONDS,
+    finishQuiz,
+    isExam,
+    showResultsModal,
+    totalSeconds,
+  ]);
+
+  const canNavigateToQuestion = useCallback(
+    (index: number) => {
+      if (index < 0 || index >= themeQuestions.length) {
+        return false;
+      }
+
+      return !isExam || isExamReviewMode || !answerResults[index];
+    },
+    [answerResults, isExam, isExamReviewMode, themeQuestions.length],
+  );
+
+  const goToQuestion = useCallback(
+    (index: number) => {
+      if (!canNavigateToQuestion(index)) {
+        return;
+      }
+
+      if (nextQuestionTimeout.current) {
+        clearTimeout(nextQuestionTimeout.current);
+      }
+
+      setCurrentIdx(index);
+    },
+    [canNavigateToQuestion],
+  );
 
   const handleAnswer = useCallback(
     (optionId: number) => {
-      if (currentAnswerResult) return;
+      if (currentAnswerResult || isQuizFinished) return;
 
       const isCorrect = isCorrectAnswer(currentQuestion, optionId);
 
@@ -104,15 +168,16 @@ export default function QuizPage() {
       }));
 
       const nextAnsweredCount = answeredCount + 1;
+      const nextWrongCount = wrongCount + (isCorrect ? 0 : 1);
+      const isQuizCompleted = nextAnsweredCount === themeQuestions.length;
+      const isExamFailed = isExam && nextWrongCount >= EXAM_MAX_WRONG_ANSWERS;
 
-      if (nextAnsweredCount === themeQuestions.length) {
-        stopTotalTimer();
-        setTimeout(() => {
-          setShowResultsModal(true);
-        }, 500);
+      if (isQuizCompleted || isExamFailed) {
+        finishQuiz();
+        return;
       }
 
-      if (isCorrect && currentIdx < themeQuestions.length - 1) {
+      if (!isExam && isCorrect && currentIdx < themeQuestions.length - 1) {
         nextQuestionTimeout.current = setTimeout(() => {
           setCurrentIdx((prev) => prev + 1);
         }, 600);
@@ -123,6 +188,11 @@ export default function QuizPage() {
       currentQuestion,
       currentIdx,
       answeredCount,
+      wrongCount,
+      isExam,
+      isQuizFinished,
+      finishQuiz,
+      EXAM_MAX_WRONG_ANSWERS,
       themeQuestions.length,
       stopQuestionTimer,
       getElapsedQuestionTime,
@@ -150,6 +220,7 @@ export default function QuizPage() {
           questions={themeQuestions}
           currentIdx={currentIdx}
           answerResults={answerResults}
+          isExam={isExam && !isExamReviewMode}
           onNavigate={goToQuestion}
         />
 
@@ -163,18 +234,24 @@ export default function QuizPage() {
         <QuizFooterNavigation
           currentIdx={currentIdx}
           totalQuestions={themeQuestions.length}
+          isPrevDisabled={!canNavigateToQuestion(currentIdx - 1)}
+          isNextDisabled={!canNavigateToQuestion(currentIdx + 1)}
           onPrev={() => goToQuestion(currentIdx - 1)}
           onNext={() => goToQuestion(currentIdx + 1)}
         />
       </div>
 
       <QuizResultsModal
+        isExamFailed={isExamFailed}
         isOpen={showResultsModal}
         correctAnswers={correctCount}
-        wrongAnswers={answeredCount - correctCount}
+        wrongAnswers={wrongCount}
         totalQuestions={themeQuestions.length}
         totalTime={formatTime(totalSeconds)}
-        onClose={() => setShowResultsModal(false)}
+        onReview={() => {
+          setIsExamReviewMode(true);
+          setShowResultsModal(false);
+        }}
       />
     </main>
   );

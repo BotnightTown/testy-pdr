@@ -19,6 +19,12 @@ export default function Home() {
             buttonText="Почати тестування"
           />
           <MainPageCard
+            title="Іспит"
+            description="Іспит як у сервісному центрі МВС."
+            link={`/quiz/exam-${Date.now()}`}
+            buttonText="Почати тестування"
+          />
+          <MainPageCard
             title="Питання по темах"
             description="Оберіть конкретний розділ правил дорожнього руху."
             link="/topics"
