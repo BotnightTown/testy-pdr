@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { useDrivingCategorySettings } from "@/hooks/useDrivingCategorySettings";
 
 import { isCorrectAnswer } from "@/lib/quiz-service";
+import { writeTopicProgress } from "@/hooks/useTopicProgress";
 
 import QuizHeader from "@/components/QuizPage/QuizHeader";
 import QuestionNavigation from "@/components/QuizPage/QuestionNavigation";
@@ -19,19 +20,12 @@ import { useQuizData } from "@/hooks/useQuizData";
 import { formatTime } from "@/utils/formatTime";
 
 import { AnswerResult } from "@/types/question.types";
-import {
-  EXAM_MAX_WRONG_ANSWERS,
-  EXAM_TIME_LIMIT_SECONDS,
-} from "@/constants/quiz.constants";
 
 export default function QuizPage() {
+  const EXAM_TIME_LIMIT_SECONDS = 20 * 60;
+  const EXAM_MAX_WRONG_ANSWERS = 2;
+
   const { id } = useParams();
-  const themeId = Array.isArray(id) ? id[0] : id;
-
-  return <QuizSession key={themeId ?? "missing-quiz"} themeId={themeId} />;
-}
-
-function QuizSession({ themeId }: { themeId: string | undefined }) {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answerResults, setAnswerResults] = useState<
     Record<number, AnswerResult>
@@ -44,8 +38,19 @@ function QuizSession({ themeId }: { themeId: string | undefined }) {
   );
   const [selectedCategoryIds] = useDrivingCategorySettings();
 
-  const { isExam, themeQuestions, quizTitle, quizLabel, backHref, backLabel } =
-    useQuizData(themeId, selectedCategoryIds);
+  const themeId = Array.isArray(id) ? id[0] : id;
+
+  const {
+    isExam,
+    isRandomQuiz,
+    themeQuestions,
+    quizTitle,
+    quizLabel,
+    backHref,
+    backLabel,
+  } = useQuizData(themeId, selectedCategoryIds);
+
+  const shouldSaveProgress = !isExam && !isRandomQuiz && Boolean(themeId);
 
   const {
     totalSeconds,
@@ -163,14 +168,31 @@ function QuizSession({ themeId }: { themeId: string | undefined }) {
 
       stopQuestionTimer();
 
-      setAnswerResults((prev) => ({
-        ...prev,
-        [currentIdx]: {
-          selectedOptionId: optionId,
-          isCorrect,
-          timeSpent,
-        },
-      }));
+      setAnswerResults((prev) => {
+        const next = {
+          ...prev,
+          [currentIdx]: {
+            selectedOptionId: optionId,
+            isCorrect,
+            timeSpent,
+          },
+        };
+
+        if (shouldSaveProgress) {
+          const correct = Object.values(next).filter((r) => r.isCorrect).length;
+          const incorrect = Object.values(next).filter(
+            (r) => !r.isCorrect,
+          ).length;
+
+          writeTopicProgress(themeId!, {
+            correct,
+            incorrect,
+            total: themeQuestions.length,
+          });
+        }
+
+        return next;
+      });
 
       const nextAnsweredCount = answeredCount + 1;
       const nextWrongCount = wrongCount + (isCorrect ? 0 : 1);
@@ -196,6 +218,8 @@ function QuizSession({ themeId }: { themeId: string | undefined }) {
       wrongCount,
       isExam,
       isQuizFinished,
+      shouldSaveProgress,
+      themeId,
       finishQuiz,
       EXAM_MAX_WRONG_ANSWERS,
       themeQuestions.length,

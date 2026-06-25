@@ -37,6 +37,12 @@ export default function Home() {
             link="/settings"
             buttonText="Вибрати категорії"
           />
+          <MainPageCard
+            title="Що нового"
+            description="Історія оновлень та нові можливості застосунку."
+            link="/changelog"
+            buttonText="Переглянути"
+          />
         </div>
       </div>
 
