@@ -24,12 +24,17 @@ function QuestionNavigationComponent({
     const activeButton = activeButtonRef.current;
     if (!container || !activeButton) return;
 
-    const containerWidth = container.offsetWidth;
-    const buttonLeft = activeButton.offsetLeft;
-    const buttonWidth = activeButton.offsetWidth;
+    const containerRect = container.getBoundingClientRect();
+    const buttonRect = activeButton.getBoundingClientRect();
+
+    const buttonOffsetLeft =
+      buttonRect.left - containerRect.left + container.scrollLeft;
+    const targetScroll =
+      buttonOffsetLeft - container.offsetWidth / 2 + buttonRect.width / 2;
+    const maxScroll = container.scrollWidth - container.offsetWidth;
 
     container.scrollTo({
-      left: buttonLeft - containerWidth / 2 + buttonWidth / 2,
+      left: Math.max(0, Math.min(targetScroll, maxScroll)),
       behavior: "smooth",
     });
   }, [currentIdx]);
