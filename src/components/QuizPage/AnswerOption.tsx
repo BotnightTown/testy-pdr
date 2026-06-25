@@ -19,7 +19,6 @@ function AnswerOptionComponent({
   optionId,
   optionText,
   isAnswered,
-  isSelected,
   shouldShowCorrectAnswer,
   shouldShowWrongAnswer,
   onClick,

@@ -19,12 +19,19 @@ import { useQuizData } from "@/hooks/useQuizData";
 import { formatTime } from "@/utils/formatTime";
 
 import { AnswerResult } from "@/types/question.types";
+import {
+  EXAM_MAX_WRONG_ANSWERS,
+  EXAM_TIME_LIMIT_SECONDS,
+} from "@/constants/quiz.constants";
 
 export default function QuizPage() {
-  const EXAM_TIME_LIMIT_SECONDS = 20 * 60;
-  const EXAM_MAX_WRONG_ANSWERS = 2;
-
   const { id } = useParams();
+  const themeId = Array.isArray(id) ? id[0] : id;
+
+  return <QuizSession key={themeId ?? "missing-quiz"} themeId={themeId} />;
+}
+
+function QuizSession({ themeId }: { themeId: string | undefined }) {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [answerResults, setAnswerResults] = useState<
     Record<number, AnswerResult>
@@ -36,8 +43,6 @@ export default function QuizPage() {
     null,
   );
   const [selectedCategoryIds] = useDrivingCategorySettings();
-
-  const themeId = Array.isArray(id) ? id[0] : id;
 
   const { isExam, themeQuestions, quizTitle, quizLabel, backHref, backLabel } =
     useQuizData(themeId, selectedCategoryIds);

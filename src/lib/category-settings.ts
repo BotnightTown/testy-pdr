@@ -1,14 +1,12 @@
+import {
+  CATEGORY_ID_SET,
+  CATEGORY_SETTINGS_STORAGE_KEY,
+  DEFAULT_DRIVING_CATEGORY_IDS,
+} from "@/constants/quiz.constants";
 import { DrivingCategoryId } from "@/types/question.types";
 
-export const CATEGORY_SETTINGS_STORAGE_KEY = "testy-pdr-driving-categories";
-
-const CATEGORY_IDS: DrivingCategoryId[] = ["A", "B", "C", "D", "E", "T"];
-const CATEGORY_ID_SET = new Set<string>(CATEGORY_IDS);
-
-export const DEFAULT_DRIVING_CATEGORY_IDS: DrivingCategoryId[] = [];
-
 export function parseDrivingCategoryIds(
-  value: string | null
+  value: string | null,
 ): DrivingCategoryId[] {
   if (!value) {
     return DEFAULT_DRIVING_CATEGORY_IDS;
@@ -35,16 +33,17 @@ export function readStoredDrivingCategoryIds(): DrivingCategoryId[] {
   }
 
   return parseDrivingCategoryIds(
-    window.localStorage.getItem(CATEGORY_SETTINGS_STORAGE_KEY)
+    window.localStorage.getItem(CATEGORY_SETTINGS_STORAGE_KEY),
   );
 }
 
 export function writeStoredDrivingCategoryIds(
-  categoryIds: DrivingCategoryId[]
+  categoryIds: DrivingCategoryId[],
 ): void {
   window.localStorage.setItem(
     CATEGORY_SETTINGS_STORAGE_KEY,
-    JSON.stringify(categoryIds)
+    JSON.stringify(categoryIds),
   );
   window.dispatchEvent(new Event(CATEGORY_SETTINGS_STORAGE_KEY));
 }
+export { DEFAULT_DRIVING_CATEGORY_IDS, CATEGORY_SETTINGS_STORAGE_KEY };
