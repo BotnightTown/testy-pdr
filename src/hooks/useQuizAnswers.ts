@@ -3,6 +3,7 @@
 import { useCallback, useMemo, useState } from "react";
 
 import { isCorrectAnswer } from "@/lib/quiz-service";
+import { writeTopicProgress } from "@/hooks/useTopicProgress";
 
 import { AnswerResult } from "@/types/question.types";
 
@@ -11,6 +12,8 @@ interface Params {
   currentQuestion: any;
 
   totalQuestions: number;
+
+  themeId?: string;
 
   onFinish?: () => void;
   onCorrectAnswer?: () => void;
@@ -23,6 +26,7 @@ export function useQuizAnswers({
   currentIdx,
   currentQuestion,
   totalQuestions,
+  themeId,
   onFinish,
   onCorrectAnswer,
   getElapsedQuestionTime,
@@ -50,19 +54,37 @@ export function useQuizAnswers({
       }
 
       const isCorrect = isCorrectAnswer(currentQuestion, optionId);
-
       const timeSpent = getElapsedQuestionTime();
 
       stopQuestionTimer();
 
-      setAnswerResults((prev) => ({
-        ...prev,
-        [currentIdx]: {
-          selectedOptionId: optionId,
-          isCorrect,
-          timeSpent,
-        },
-      }));
+      setAnswerResults((prev) => {
+        const next = {
+          ...prev,
+          [currentIdx]: {
+            selectedOptionId: optionId,
+            isCorrect,
+            timeSpent,
+          },
+        };
+
+        if (themeId) {
+          const correctTotal = Object.values(next).filter(
+            (r) => r.isCorrect,
+          ).length;
+          const incorrectTotal = Object.values(next).filter(
+            (r) => !r.isCorrect,
+          ).length;
+
+          writeTopicProgress(themeId, {
+            correct: correctTotal,
+            incorrect: incorrectTotal,
+            total: totalQuestions,
+          });
+        }
+
+        return next;
+      });
 
       const nextAnsweredCount = answeredCount + 1;
 
@@ -80,6 +102,7 @@ export function useQuizAnswers({
       currentQuestion,
       answeredCount,
       totalQuestions,
+      themeId,
       getElapsedQuestionTime,
       stopQuestionTimer,
       onFinish,

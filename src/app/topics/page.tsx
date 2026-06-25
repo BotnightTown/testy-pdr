@@ -4,10 +4,15 @@ import Link from "next/link";
 import QuizCard from "@/components/TopicCard";
 import { useDrivingCategorySettings } from "@/hooks/useDrivingCategorySettings";
 import { getQuestionThemesByCategories } from "@/lib/quiz-service";
+import { useAllTopicsProgress } from "@/hooks/useTopicProgress";
+import { useMemo } from "react";
 
 export default function TopicsPage() {
   const [selectedCategoryIds] = useDrivingCategorySettings();
   const themes = getQuestionThemesByCategories(selectedCategoryIds);
+
+  const themeIds = useMemo(() => themes.map((t) => t.id), [themes]);
+  const progressMap = useAllTopicsProgress(themeIds);
 
   return (
     <main className="min-h-screen bg-slate-50 px-4 py-8 sm:px-6">
@@ -43,6 +48,7 @@ export default function TopicsPage() {
               id={theme.id}
               title={theme.title}
               questionCount={theme.questionCount}
+              progress={progressMap[theme.id]}
             />
           ))}
         </div>
