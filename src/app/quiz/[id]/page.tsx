@@ -77,7 +77,7 @@ export default function QuizPage() {
   );
 
   const wrongCount = answeredCount - correctCount;
-  const isExamFailed = isExam && wrongCount >= EXAM_MAX_WRONG_ANSWERS;
+  const isExamFailed = isExam && wrongCount > EXAM_MAX_WRONG_ANSWERS;
 
   const finishQuiz = useCallback(
     (delay = 500) => {
