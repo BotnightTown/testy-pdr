@@ -30,6 +30,16 @@ export const CHANGELOG: ChangelogEntry[] = [
       },
     ],
   },
+  {
+    version: "1.4.0",
+    date: "22.09.2026",
+    changes: [
+      {
+        type: "fix",
+        text: "На деяких питаннях були зображення яких не мало бути. Вони прибрані",
+      },
+    ],
+  },
 ];
 
 export const TYPE_LABELS: Record<

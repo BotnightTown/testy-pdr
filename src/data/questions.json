@@ -167,8 +167,7 @@
         "text": "Пішоходи, водії, пасажири, погоничі тварин, велосипедисти та регулювальник."
       }
     ],
-    "answer": "2",
-    "image": "images/figure_2.png"
+    "answer": "2"
   },
   {
     "section": "1",
@@ -304,8 +303,7 @@
         "text": "Ні, не призначена."
       }
     ],
-    "answer": "2",
-    "image": "images/figure_3.png"
+    "answer": "2"
   },
   {
     "section": "1",
@@ -565,7 +563,8 @@
         "text": "Відповідь 1 та 2."
       }
     ],
-    "answer": "2"
+    "answer": "2",
+    "image": "images/figure_11.png"
   },
   {
     "section": "1",
@@ -2916,8 +2915,7 @@
         "text": "Відповіді 3 і 4."
       }
     ],
-    "answer": "5",
-    "image": "images/figure_46.png"
+    "answer": "5"
   },
   {
     "section": "4",
@@ -10812,8 +10810,7 @@
         "text": "Повинен завжди."
       }
     ],
-    "answer": "2",
-    "image": "images/figure_215.png"
+    "answer": "2"
   },
   {
     "section": "12",
