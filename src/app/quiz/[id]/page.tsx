@@ -23,10 +23,10 @@ import { getQuestionKey } from "@/lib/quiz-service";
 import { formatTime } from "@/utils/formatTime";
 
 import type { AnswerResult, Question } from "@/types/question.types";
+import { EXAM_MAX_WRONG_ANSWERS } from "@/constants/quiz.constants";
 
 export default function QuizPage() {
   const EXAM_TIME_LIMIT_SECONDS = 20 * 60;
-  const EXAM_MAX_WRONG_ANSWERS = 2;
 
   const { id } = useParams();
   const [currentIdx, setCurrentIdx] = useState(0);

@@ -16,8 +16,6 @@ export default function HomeTabs() {
   const wrongQuestions = getQuestionsByKeys(wrongQuestionKeys);
   const favoriteQuestionsCount = favoriteQuestions.length;
   const wrongQuestionsCount = wrongQuestions.length;
-  const visibleFavoriteQuestions = favoriteQuestions.slice(0, 2);
-  const visibleWrongQuestions = wrongQuestions.slice(0, 2);
 
   return (
     <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -45,14 +43,6 @@ export default function HomeTabs() {
             <p className="font-semibold text-slate-600">
               Збережено питань: {favoriteQuestionsCount}
             </p>
-            {visibleFavoriteQuestions.map((question) => (
-              <p
-                key={`${question.section}:${question.question_id}`}
-                className="line-clamp-2"
-              >
-                {question.question}
-              </p>
-            ))}
           </div>
         ) : (
           <p className="text-sm leading-6 text-slate-500">
