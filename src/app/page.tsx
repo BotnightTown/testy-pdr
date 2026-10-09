@@ -1,5 +1,4 @@
-import GeneratedQuizCard from "@/components/GeneratedQuizCard";
-import MainPageCard from "@/components/MainPageCard";
+import HomeTabs from "@/components/HomeTabs";
 
 export default function Home() {
   return (
@@ -12,38 +11,7 @@ export default function Home() {
           <p className="mt-2 text-slate-600">Оберіть режим тренування</p>
         </header>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          <GeneratedQuizCard
-            title="20 випадкових питань"
-            description="Швидке тренування з питань усіх тем."
-            mode="random"
-            buttonText="Почати тестування"
-          />
-          <GeneratedQuizCard
-            title="Іспит"
-            description="Іспит як у сервісному центрі МВС."
-            mode="exam"
-            buttonText="Почати тестування"
-          />
-          <MainPageCard
-            title="Питання по темах"
-            description="Оберіть конкретний розділ правил дорожнього руху."
-            link="/topics"
-            buttonText="Перейти до тем"
-          />
-          <MainPageCard
-            title="Налаштування категорій"
-            description="Оберіть категорії водіння для навчання."
-            link="/settings"
-            buttonText="Вибрати категорії"
-          />
-          <MainPageCard
-            title="Що нового"
-            description="Історія оновлень та нові можливості застосунку."
-            link="/changelog"
-            buttonText="Переглянути"
-          />
-        </div>
+        <HomeTabs />
       </div>
 
       <footer className="text-center text-slate-500 flex flex-row justify-center items-center gap-1 mt-10">

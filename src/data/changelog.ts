@@ -9,6 +9,30 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "1.5.0",
+    date: "09.10.2026",
+    changes: [
+      {
+        type: "new",
+        text: "Додана можливість позначати питання як вибрані та проходити їх окремим тестом з головної сторінки",
+      },
+      {
+        type: "improvement",
+        text: "Вибрані питання зберігаються між сесіями у браузері",
+      },
+    ],
+  },
+  {
+    version: "1.4.1",
+    date: "09.10.2026",
+    changes: [
+      {
+        type: "improvement",
+        text: "33-тю тему розділено на окремі підтеми",
+      },
+    ],
+  },
+  {
     version: "1.4.0",
     date: "22.09.2026",
     changes: [

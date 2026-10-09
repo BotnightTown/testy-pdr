@@ -123,6 +123,22 @@ export function getQuestionsByTheme(
   return questions.filter(({ section }) => section === normalizedThemeId);
 }
 
+export function getQuestionKey(
+  question: Pick<Question, "section" | "question_id">,
+) {
+  return `${question.section}:${question.question_id}`;
+}
+
+export function getQuestionsByKeys(questionKeys: string[]) {
+  const questionsByKey = new Map(
+    questions.map((question) => [getQuestionKey(question), question]),
+  );
+
+  return questionKeys
+    .map((questionKey) => questionsByKey.get(questionKey))
+    .filter((question): question is Question => Boolean(question));
+}
+
 export function getQuestionById(
   themeId: QuestionTheme["id"] | Question["section"],
   questionId: Question["question_id"],
