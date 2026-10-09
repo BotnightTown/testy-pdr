@@ -16,6 +16,8 @@ import QuizResultsModal from "@/components/QuizPage/QuizResultsModal";
 
 import { useQuizTimer } from "@/hooks/useQuizTimer";
 import { useQuizData } from "@/hooks/useQuizData";
+import { useFavoriteQuestions } from "@/hooks/useFavoriteQuestions";
+import { getQuestionKey } from "@/lib/quiz-service";
 
 import { formatTime } from "@/utils/formatTime";
 
@@ -37,20 +39,27 @@ export default function QuizPage() {
     null,
   );
   const [selectedCategoryIds] = useDrivingCategorySettings();
+  const {
+    favoriteQuestionKeys,
+    favoriteQuestionKeySet,
+    toggleFavoriteQuestion,
+  } = useFavoriteQuestions();
 
   const themeId = Array.isArray(id) ? id[0] : id;
 
   const {
     isExam,
     isRandomQuiz,
+    isFavoritesQuiz,
     themeQuestions,
     quizTitle,
     quizLabel,
     backHref,
     backLabel,
-  } = useQuizData(themeId, selectedCategoryIds);
+  } = useQuizData(themeId, selectedCategoryIds, favoriteQuestionKeys);
 
-  const shouldSaveProgress = !isExam && !isRandomQuiz && Boolean(themeId);
+  const shouldSaveProgress =
+    !isExam && !isRandomQuiz && !isFavoritesQuiz && Boolean(themeId);
 
   const {
     totalSeconds,
@@ -257,6 +266,10 @@ export default function QuizPage() {
           currentQuestion={currentQuestion}
           currentAnswerResult={currentAnswerResult}
           questionSeconds={questionSeconds}
+          isFavorite={favoriteQuestionKeySet.has(
+            getQuestionKey(currentQuestion),
+          )}
+          onToggleFavorite={() => toggleFavoriteQuestion(currentQuestion)}
           onAnswer={handleAnswer}
         />
 
