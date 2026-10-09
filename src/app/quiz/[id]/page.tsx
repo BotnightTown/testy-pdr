@@ -16,14 +16,17 @@ import QuizResultsModal from "@/components/QuizPage/QuizResultsModal";
 
 import { useQuizTimer } from "@/hooks/useQuizTimer";
 import { useQuizData } from "@/hooks/useQuizData";
+import { useFavoriteQuestions } from "@/hooks/useFavoriteQuestions";
+import { useWrongQuestions } from "@/hooks/useWrongQuestions";
+import { getQuestionKey } from "@/lib/quiz-service";
 
 import { formatTime } from "@/utils/formatTime";
 
-import { AnswerResult } from "@/types/question.types";
+import type { AnswerResult, Question } from "@/types/question.types";
+import { EXAM_MAX_WRONG_ANSWERS } from "@/constants/quiz.constants";
 
 export default function QuizPage() {
   const EXAM_TIME_LIMIT_SECONDS = 20 * 60;
-  const EXAM_MAX_WRONG_ANSWERS = 2;
 
   const { id } = useParams();
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -37,20 +40,53 @@ export default function QuizPage() {
     null,
   );
   const [selectedCategoryIds] = useDrivingCategorySettings();
+  const {
+    favoriteQuestionKeys,
+    favoriteQuestionKeySet,
+    toggleFavoriteQuestion,
+  } = useFavoriteQuestions();
+  const { wrongQuestionKeys, addWrongQuestion, removeWrongQuestion } =
+    useWrongQuestions();
 
   const themeId = Array.isArray(id) ? id[0] : id;
 
   const {
     isExam,
     isRandomQuiz,
-    themeQuestions,
+    isFavoritesQuiz,
+    isMistakesQuiz,
+    themeQuestions: questionsFromData,
     quizTitle,
     quizLabel,
     backHref,
     backLabel,
-  } = useQuizData(themeId, selectedCategoryIds);
+  } = useQuizData(
+    themeId,
+    selectedCategoryIds,
+    favoriteQuestionKeys,
+    wrongQuestionKeys,
+  );
 
-  const shouldSaveProgress = !isExam && !isRandomQuiz && Boolean(themeId);
+  const [mistakeQuestionSnapshot, setMistakeQuestionSnapshot] = useState<{
+    themeId: string;
+    questions: Question[];
+  } | null>(null);
+
+  const mistakeQuestionsForQuiz =
+    mistakeQuestionSnapshot?.themeId === themeId
+      ? mistakeQuestionSnapshot
+      : null;
+  const themeQuestions =
+    isMistakesQuiz && mistakeQuestionsForQuiz
+      ? mistakeQuestionsForQuiz.questions
+      : questionsFromData;
+
+  const shouldSaveProgress =
+    !isExam &&
+    !isRandomQuiz &&
+    !isFavoritesQuiz &&
+    !isMistakesQuiz &&
+    Boolean(themeId);
 
   const {
     totalSeconds,
@@ -77,7 +113,7 @@ export default function QuizPage() {
   );
 
   const wrongCount = answeredCount - correctCount;
-  const isExamFailed = isExam && wrongCount > EXAM_MAX_WRONG_ANSWERS;
+  const isExamFailed = isExam && wrongCount >= EXAM_MAX_WRONG_ANSWERS;
 
   const finishQuiz = useCallback(
     (delay = 500) => {
@@ -168,6 +204,19 @@ export default function QuizPage() {
 
       stopQuestionTimer();
 
+      if (!isCorrect) {
+        addWrongQuestion(currentQuestion);
+      } else if (isMistakesQuiz) {
+        if (themeId) {
+          setMistakeQuestionSnapshot((current) =>
+            current?.themeId === themeId
+              ? current
+              : { themeId, questions: themeQuestions },
+          );
+          removeWrongQuestion(currentQuestion);
+        }
+      }
+
       setAnswerResults((prev) => {
         const next = {
           ...prev,
@@ -220,9 +269,12 @@ export default function QuizPage() {
       isQuizFinished,
       shouldSaveProgress,
       themeId,
+      themeQuestions,
+      addWrongQuestion,
+      isMistakesQuiz,
+      removeWrongQuestion,
       finishQuiz,
       EXAM_MAX_WRONG_ANSWERS,
-      themeQuestions.length,
       stopQuestionTimer,
       getElapsedQuestionTime,
     ],
@@ -257,6 +309,10 @@ export default function QuizPage() {
           currentQuestion={currentQuestion}
           currentAnswerResult={currentAnswerResult}
           questionSeconds={questionSeconds}
+          isFavorite={favoriteQuestionKeySet.has(
+            getQuestionKey(currentQuestion),
+          )}
+          onToggleFavorite={() => toggleFavoriteQuestion(currentQuestion)}
           onAnswer={handleAnswer}
         />
 
