@@ -17,11 +17,12 @@ import QuizResultsModal from "@/components/QuizPage/QuizResultsModal";
 import { useQuizTimer } from "@/hooks/useQuizTimer";
 import { useQuizData } from "@/hooks/useQuizData";
 import { useFavoriteQuestions } from "@/hooks/useFavoriteQuestions";
+import { useWrongQuestions } from "@/hooks/useWrongQuestions";
 import { getQuestionKey } from "@/lib/quiz-service";
 
 import { formatTime } from "@/utils/formatTime";
 
-import { AnswerResult } from "@/types/question.types";
+import type { AnswerResult, Question } from "@/types/question.types";
 
 export default function QuizPage() {
   const EXAM_TIME_LIMIT_SECONDS = 20 * 60;
@@ -44,6 +45,8 @@ export default function QuizPage() {
     favoriteQuestionKeySet,
     toggleFavoriteQuestion,
   } = useFavoriteQuestions();
+  const { wrongQuestionKeys, addWrongQuestion, removeWrongQuestion } =
+    useWrongQuestions();
 
   const themeId = Array.isArray(id) ? id[0] : id;
 
@@ -51,15 +54,39 @@ export default function QuizPage() {
     isExam,
     isRandomQuiz,
     isFavoritesQuiz,
-    themeQuestions,
+    isMistakesQuiz,
+    themeQuestions: questionsFromData,
     quizTitle,
     quizLabel,
     backHref,
     backLabel,
-  } = useQuizData(themeId, selectedCategoryIds, favoriteQuestionKeys);
+  } = useQuizData(
+    themeId,
+    selectedCategoryIds,
+    favoriteQuestionKeys,
+    wrongQuestionKeys,
+  );
+
+  const [mistakeQuestionSnapshot, setMistakeQuestionSnapshot] = useState<{
+    themeId: string;
+    questions: Question[];
+  } | null>(null);
+
+  const mistakeQuestionsForQuiz =
+    mistakeQuestionSnapshot?.themeId === themeId
+      ? mistakeQuestionSnapshot
+      : null;
+  const themeQuestions =
+    isMistakesQuiz && mistakeQuestionsForQuiz
+      ? mistakeQuestionsForQuiz.questions
+      : questionsFromData;
 
   const shouldSaveProgress =
-    !isExam && !isRandomQuiz && !isFavoritesQuiz && Boolean(themeId);
+    !isExam &&
+    !isRandomQuiz &&
+    !isFavoritesQuiz &&
+    !isMistakesQuiz &&
+    Boolean(themeId);
 
   const {
     totalSeconds,
@@ -86,7 +113,7 @@ export default function QuizPage() {
   );
 
   const wrongCount = answeredCount - correctCount;
-  const isExamFailed = isExam && wrongCount > EXAM_MAX_WRONG_ANSWERS;
+  const isExamFailed = isExam && wrongCount >= EXAM_MAX_WRONG_ANSWERS;
 
   const finishQuiz = useCallback(
     (delay = 500) => {
@@ -177,6 +204,19 @@ export default function QuizPage() {
 
       stopQuestionTimer();
 
+      if (!isCorrect) {
+        addWrongQuestion(currentQuestion);
+      } else if (isMistakesQuiz) {
+        if (themeId) {
+          setMistakeQuestionSnapshot((current) =>
+            current?.themeId === themeId
+              ? current
+              : { themeId, questions: themeQuestions },
+          );
+          removeWrongQuestion(currentQuestion);
+        }
+      }
+
       setAnswerResults((prev) => {
         const next = {
           ...prev,
@@ -229,9 +269,12 @@ export default function QuizPage() {
       isQuizFinished,
       shouldSaveProgress,
       themeId,
+      themeQuestions,
+      addWrongQuestion,
+      isMistakesQuiz,
+      removeWrongQuestion,
       finishQuiz,
       EXAM_MAX_WRONG_ANSWERS,
-      themeQuestions.length,
       stopQuestionTimer,
       getElapsedQuestionTime,
     ],

@@ -11,15 +11,20 @@ export function useQuizData(
   themeId: string | undefined,
   selectedCategoryIds: DrivingCategoryId[],
   favoriteQuestionKeys: string[] = [],
+  wrongQuestionKeys: string[] = [],
 ) {
   return useMemo(() => {
     const isRandomQuiz = themeId?.startsWith("random-") ?? false;
     const isExam = themeId?.startsWith("exam-") ?? false;
     const isFavoritesQuiz = themeId === "favorites";
-    const isGeneratedQuiz = isRandomQuiz || isExam || isFavoritesQuiz;
+    const isMistakesQuiz = themeId === "mistakes";
+    const isGeneratedQuiz =
+      isRandomQuiz || isExam || isFavoritesQuiz || isMistakesQuiz;
 
     const themeQuestions = isFavoritesQuiz
       ? getQuestionsByKeys(favoriteQuestionKeys)
+      : isMistakesQuiz
+        ? getQuestionsByKeys(wrongQuestionKeys)
       : isGeneratedQuiz
         ? getRandomQuestions(20, undefined, themeId, selectedCategoryIds)
         : getQuestionsByTheme(themeId ?? "");
@@ -32,6 +37,7 @@ export function useQuizData(
       isRandomQuiz,
       isExam,
       isFavoritesQuiz,
+      isMistakesQuiz,
       themeQuestions,
       themeInfo,
       quizTitle: isExam
@@ -40,6 +46,8 @@ export function useQuizData(
           ? "20 випадкових питань"
           : isFavoritesQuiz
             ? "Вибрані питання"
+          : isMistakesQuiz
+            ? "Питання з помилками"
           : themeInfo?.title,
       quizLabel: isExam
         ? "Екзаменаційний режим"
@@ -47,9 +55,11 @@ export function useQuizData(
           ? "Випадковий тест"
           : isFavoritesQuiz
             ? "Обране"
+          : isMistakesQuiz
+            ? "Помилки"
           : `Тема #${themeId}`,
       backHref: isGeneratedQuiz ? "/" : "/topics",
       backLabel: isGeneratedQuiz ? "На головну" : "Назад до тем",
     };
-  }, [themeId, selectedCategoryIds, favoriteQuestionKeys]);
+  }, [themeId, selectedCategoryIds, favoriteQuestionKeys, wrongQuestionKeys]);
 }

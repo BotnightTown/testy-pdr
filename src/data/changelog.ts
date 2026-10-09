@@ -9,6 +9,16 @@ export interface ChangelogEntry {
 
 export const CHANGELOG: ChangelogEntry[] = [
   {
+    version: "1.5.01",
+    date: "09.10.2026",
+    changes: [
+      {
+        type: "new",
+        text: "Додана функція збереження неправильних відповідей та проходження їх окремим тестом",
+      },
+    ],
+  },
+  {
     version: "1.5.0",
     date: "09.10.2026",
     changes: [
